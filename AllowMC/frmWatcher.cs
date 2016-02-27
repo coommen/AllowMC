@@ -126,8 +126,12 @@ namespace AllowMC
         //start Service
         private void startService()
         {
-            if (svcMgr.Status != System.ServiceProcess.ServiceControllerStatus.Running) svcMgr.Start();
-            Thread.Sleep(5000);
+            //if (svcMgr.Status != System.ServiceProcess.ServiceControllerStatus.Running) svcMgr.Start();
+            Cursor = Cursors.AppStarting;
+            svcMgr.Start();
+            svcMgr.WaitForStatus(System.ServiceProcess.ServiceControllerStatus.Running, new TimeSpan(0, 0, 30));
+            //            Thread.Sleep(5000);
+            Cursor = Cursors.Default;
         }
  
         #region Process Routines
