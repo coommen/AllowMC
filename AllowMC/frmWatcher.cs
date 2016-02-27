@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Management;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -126,6 +127,7 @@ namespace AllowMC
         private void startService()
         {
             if (svcMgr.Status != System.ServiceProcess.ServiceControllerStatus.Running) svcMgr.Start();
+            Thread.Sleep(5000);
         }
  
         #region Process Routines
